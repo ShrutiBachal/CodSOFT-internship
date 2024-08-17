@@ -1,0 +1,26 @@
+import java.io.*;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter your subject count : ");
+        int n = sc.nextInt();
+        int sum=0;
+        for(int i=0;i<n;i++){
+            System.out.print("Enter marks obtained for subject "+(i+1)+" : ");
+            int marks = sc.nextInt();
+            sum += marks;
+        }
+
+        int avg = sum/n;
+        char grade;
+
+        if(avg>80) grade = 'A';
+        else if(avg>=72 &&  avg<=80) grade = 'B';
+        else if(avg>=65 && avg<72) grade = 'C';
+        else grade = 'D';
+
+        System.out.println("Your score:\nTotal marks\t\tAverage marks\t\tGrade\n\t"+sum+"\t\t\t\t"+avg+"\t\t\t\t "+grade);
+    }
+}
