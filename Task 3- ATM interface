@@ -1,0 +1,61 @@
+import java.util.*;
+
+class ATM {
+    Bank_acc a = new Bank_acc();
+    public void withdraw(int amount){
+        if(amount < a.acc_bal){
+            a.acc_bal -= amount;
+            System.out.println("Amount deducted successfully!");
+        }
+        else{
+            System.out.println("Failed to withdraw! Insufficient balance.");
+        }
+    }
+
+    public void deposit(int amount){
+        a.acc_bal += amount;
+        System.out.println(("Amount deposited."));
+    }
+
+    public void mybalance(){
+        System.out.println("Your current balance is "+a.acc_bal);
+    }
+}
+
+class Bank_acc {
+    public int acc_bal;
+    Scanner sc = new Scanner(System.in);
+}
+
+public class Main {
+    public static void main(String[] args) {
+        int choice,ch;
+        Bank_acc b = new Bank_acc();
+        ATM obj1 = new ATM();
+        do {
+            System.out.println("Welcome!\nPlease select the option\n1.Deposit amount\n2.Withdraw amount\n3.Check balance\n");
+            Scanner sc = new Scanner(System.in);
+            choice = sc.nextInt();
+
+            switch(choice){
+                case 1:
+                    System.out.print("Enter the amount to deposit in the account : ");
+                    int amt = sc.nextInt();
+                    obj1.deposit(amt);
+                    break;
+
+                case 2:
+                    System.out.print("Enter the amount to withdraw from account : ");
+                    amt = sc.nextInt();
+                    obj1.withdraw(amt);
+                    break;
+
+                case 3:
+                    obj1.mybalance();
+                    break;
+            }
+            System.out.println("Press 1 to perform more operations.");
+            ch = sc.nextInt();
+        }while(ch==1);
+    }
+}
