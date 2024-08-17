@@ -1,0 +1,30 @@
+import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int choice;
+        do {
+            int score = 0;
+            Random random = new Random();
+            int r1 = random.nextInt(1, 100);
+            for (int i = 0; i < 3; i++) {
+                System.out.println("Guess the number!");
+                int a = sc.nextInt();
+                if (a == r1) {
+                    System.out.println("Hurrah! you guessed it correct");
+                    score++;
+                } else if (a == (r1 + 2) || a == (r1 - 2)) {
+                    System.out.println("You seem close!");
+                } else if (a == (r1 + 1) || a == (r1 - 1)) {
+                    System.out.println("You are almost done!");
+                } else {
+                    if (i < 3) System.out.println("Go for next chance");
+                    else System.out.println("Better luck next time!");
+                }
+            }
+            System.out.println("Actual number was "+r1);
+            System.out.println("Your total correct guesses are : " + score + "\nPress 1 to play again");
+            choice = sc.nextInt();
+        } while (choice == 1);
+    }
+}
